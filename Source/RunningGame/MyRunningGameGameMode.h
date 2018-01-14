@@ -13,8 +13,13 @@ UCLASS()
 class RUNNINGGAME_API AMyRunningGameGameMode : public ARunningGameGameMode
 {
 	GENERATED_BODY()
-	
-	
-	
-	
+
+public:
+	virtual void Tick(float DeltaTime) override;
+
+protected:
+	// 체력이 감소하는 비율 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	float DecayRate=0.1f;
+
 };

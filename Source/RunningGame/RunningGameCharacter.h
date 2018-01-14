@@ -58,11 +58,29 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	// End of APawn interface
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float InitialHealth;
+
+private:
+	UPROPERTY(VisibleAnywhere)
+	float CurrentCharacterHealth;
+
 public:
 	ARunningGameCharacter();
+
+	UFUNCTION(BlueprintPure)
+	float GetInitialHealth();
+
+	UFUNCTION(BlueprintPure)
+	float GetCurrentHealth();
+
+	UFUNCTION(BlueprintCallable)
+	void UpdateHealth(float HealthChange);
 
 	/** Returns SideViewCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetSideViewCameraComponent() const { return SideViewCameraComponent; }
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+
+	float DecayRate = 0.05f;
 };
