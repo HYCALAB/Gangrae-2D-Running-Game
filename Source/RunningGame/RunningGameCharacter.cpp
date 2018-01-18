@@ -74,6 +74,9 @@ ARunningGameCharacter::ARunningGameCharacter()
 	// Enable replication on the Sprite component so animations show up when networked
 	GetSprite()->SetIsReplicated(true);
 	bReplicates = true;
+
+	InitialHealth = 1000.0f;
+	CurrentCharacterHealth = InitialHealth;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -95,8 +98,10 @@ void ARunningGameCharacter::UpdateAnimation()
 void ARunningGameCharacter::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-	
+
 	UpdateCharacter();	
+	UpdateHealth(-DeltaSeconds * DecayRate*GetInitialHealth());
+
 }
 
 
@@ -155,4 +160,17 @@ void ARunningGameCharacter::UpdateCharacter()
 			Controller->SetControlRotation(FRotator(0.0f, 0.0f, 0.0f));
 		}
 	}
+}
+
+float ARunningGameCharacter::GetInitialHealth() {
+	return InitialHealth;
+}
+
+float ARunningGameCharacter::GetCurrentHealth() {
+	return CurrentCharacterHealth;
+}
+
+void ARunningGameCharacter::UpdateHealth(float HealthChange) {
+	UE_LOG(LogTemp, Warning, TEXT("Your message"));
+	CurrentCharacterHealth += HealthChange;
 }
