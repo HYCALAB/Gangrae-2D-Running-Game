@@ -64,7 +64,7 @@ protected:
 private:
 	UPROPERTY(VisibleAnywhere)
 	float CurrentCharacterHealth;
-
+	
 public:
 	ARunningGameCharacter();
 
@@ -76,11 +76,14 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void UpdateHealth(float HealthChange);
+	
+	UFUNCTION(BlueprintCallable)
+	void DecreaseHealth(float Damage);
 
 	/** Returns SideViewCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetSideViewCameraComponent() const { return SideViewCameraComponent; }
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
-
+	
 	float DecayRate = 0.05f;
 };
