@@ -171,6 +171,11 @@ float ARunningGameCharacter::GetCurrentHealth() {
 }
 
 void ARunningGameCharacter::UpdateHealth(float HealthChange) {
-	UE_LOG(LogTemp, Warning, TEXT("Your message"));
+	//UE_LOG(LogTemp, Warning, TEXT("Your message"));
 	CurrentCharacterHealth += HealthChange;
+}
+//when collision with obstacle, then decrease character HP
+void ARunningGameCharacter::DecreaseHealth(float Damage) {
+	UE_LOG(LogTemp, Warning, TEXT("GAngraePark"));
+	CurrentCharacterHealth -= Damage;
 }
