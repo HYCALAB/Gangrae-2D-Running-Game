@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "MyRunningGameGameMode.h"
 
@@ -7,18 +7,20 @@
 
 
 void AMyRunningGameGameMode::Tick(float DeltaTime)
-{ 
+{
 	Super::Tick(DeltaTime);
 
+	// TODO: Is getting PlayerPawn on every tick is really nessasary?
 	ARunningGameCharacter* MyCharacter = Cast<ARunningGameCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
 
 	if (MyCharacter)
 	{
-		//¹Ø µÎÁÙÀÇ 3°¡Áö ÇÔ¼ö¸¦ Á¤ÀÇÇØ¾ßÇÔ RunningGameCharacter ±â´ÉÀ» Ãß°¡ÇØ¾ßÇÔ
-		if(MyCharacter->GetCurrentHealth() > 0)
-		{ 
+		// ë°‘ ë‘ì¤„ì˜ 3ê°€ì§€ í•¨ìˆ˜ë¥¼ ì •ì˜í•´ì•¼í•¨ RunningGameCharacter ê¸°ëŠ¥ì„ ì¶”ê°€í•´ì•¼í•¨
+		// TODO: Declare GetCurrentHealth(), UpdateHealth(), GetInitialHealth() in RunningGameCharacter
+		if (MyCharacter->GetCurrentHealth() > 0)
+		{
 			UE_LOG(LogTemp, Warning, TEXT("Your message"));
-			MyCharacter->UpdateHealth(-DeltaTime * DecayRate*(MyCharacter->GetInitialHealth()));
+			MyCharacter->UpdateHealth(-DeltaTime * DecayRate * (MyCharacter->GetInitialHealth()));
 		}
 	}
 }
