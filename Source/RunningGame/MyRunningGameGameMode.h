@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -18,7 +18,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 protected:
-	// Ã¼·ÂÀÌ °¨¼ÒÇÏ´Â ºñÀ² 
+	// ì²´ë ¥ì´ ê°ì†Œí•˜ëŠ” ë¹„ìœ¨
+	// The rate of decaying per frame
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	float DecayRate=0.1f;
 
